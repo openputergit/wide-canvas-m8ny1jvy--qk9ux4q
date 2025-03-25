@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zo House Dubai | Zo World</title>
+    <script src="https://unpkg.com/three@0.157.0/build/three.min.js"></script>
+    <script src="https://unpkg.com/three@0.157.0/examples/js/controls/OrbitControls.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-r from-blue-500 to-purple-600 min-h-screen">
+    <div id="canvas-container"></div>
+
+    <nav class="fixed w-full z-50 glass-effect">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="#" class="text-white text-2xl font-bold">Zo House Dubai</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="text-white hover:text-blue-200 transition">About</a>
+                    <a href="#experience" class="text-white hover:text-blue-200 transition">Experience</a>
+                    <a href="#virtual-tour" class="text-white hover:text-blue-200 transition">Virtual Tour</a>
+                </div>
+                <button class="md:hidden text-white text-2xl">
+                    <i class="bi bi-list"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="relative pt-24">
+        <section class="container mx-auto px-6 py-20 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">Welcome to Zo House Dubai</h1>
+            <p class="text-xl text-white/90 mb-12 max-w-2xl mx-auto">Experience the future of community living in the heart of Dubai</p>
+            <a href="#virtual-tour" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-100 transition">Take Virtual Tour</a>
+        </section>
+
+        <section id="about" class="container mx-auto px-6 py-20">
+            <div class="glass-effect rounded-2xl p-8 md:p-12">
+                <h2 class="text-3xl font-bold text-white mb-6">About Zo World</h2>
+                <p class="text-white/90 text-lg mb-6">Zo World is revolutionizing the way people live, work, and connect globally. Our community-driven ecosystem provides seamless experiences across physical and virtual spaces.</p>
+                <div class="grid md:grid-cols-3 gap-8 mt-12">
+                    <div class="text-center">
+                        <i class="bi bi-house-heart text-4xl text-white mb-4"></i>
+                        <h3 class="text-xl font-semibold text-white mb-2">Community Living</h3>
+                        <p class="text-white/80">Connect with like-minded individuals in our carefully curated spaces</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="bi bi-globe text-4xl text-white mb-4"></i>
+                        <h3 class="text-xl font-semibold text-white mb-2">Global Network</h3>
+                        <p class="text-white/80">Access to worldwide locations and virtual experiences</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="bi bi-laptop text-4xl text-white mb-4"></i>
+                        <h3 class="text-xl font-semibold text-white mb-2">Digital Integration</h3>
+                        <p class="text-white/80">Seamless blend of physical and virtual worlds</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="virtual-tour" class="container mx-auto px-6 py-20">
+            <div class="glass-effect rounded-2xl p-8 md:p-12">
+                <h2 class="text-3xl font-bold text-white mb-6">Virtual Tour</h2>
+                <p class="text-white/90 text-lg mb-8">Experience Zo House Dubai in virtual reality. Explore our spaces and imagine your future here.</p>
+                <div class="aspect-w-16 aspect-h-9">
+                    <iframe 
+                        class="w-full h-[600px] rounded-xl"
+                        src="https://www.spatial.io/s/Zo-House-Denver-644accc5263629032871f4c7?share=908750773340811189"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="glass-effect mt-20">
+        <div class="container mx-auto px-6 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-white/90 mb-4 md:mb-0">© 2023 Zo World. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="https://zo.xyz" class="text-white hover:text-blue-200 transition">Zo.xyz</a>
+                    <a href="#" class="text-white hover:text-blue-200 transition"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="text-white hover:text-blue-200 transition"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="text-white hover:text-blue-200 transition"><i class="bi bi-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Three.js Animation
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+        // Create animated background
+        const geometry = new THREE.IcosahedronGeometry(5, 0);
+        const material = new THREE.MeshPhongMaterial({
+            color: 0x4a90e2,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.3
+        });
+        const mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
+
+        // Add lights
+        const light = new THREE.DirectionalLight(0xffffff, 1);
+        light.position.set(0, 0, 1);
+        scene.add(light);
+        scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+
+        camera.position.z = 10;
+
+        // Animation
+        function animate() {
+            requestAnimationFrame(animate);
+            mesh.rotation.x += 0.001;
+            mesh.rotation.y += 0.002;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Responsive canvas
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // Mobile menu toggle
+        const menuButton = document.querySelector('button');
+        const menu = document.querySelector('.md\\:flex');
+        menuButton.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('flex');
+            menu.classList.toggle('flex-col');
+            menu.classList.toggle('absolute');
+            menu.classList.toggle('top-16');
+            menu.classList.toggle('left-0');
+            menu.classList.toggle('w-full');
+            menu.classList.toggle('bg-blue-600');
+            menu.classList.toggle('p-4');
+        });
+    </script>
+<script>document.body.addEventListener('wheel', e => { if (!e.ctrlKey) return; e.preventDefault(); return }, { passive: false })</script>
+	</body>
+</html>
